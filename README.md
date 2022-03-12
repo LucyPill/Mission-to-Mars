@@ -9,3 +9,7 @@ The purpose of this challenge is to help a junior data analyst to gather data ab
 * We will use Bootstrap to poslish the web application and make it mobile responsive.
 
 ![WebApp.png](https://github.com/LucyPill/Mission-to-Mars/blob/main/MarsWebApp.png)
+
+
+Aknowlegments:
+Many thanks to Aurora Christensen and Billy Huang for helping me with this challenge. 
