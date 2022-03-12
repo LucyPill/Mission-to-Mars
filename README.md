@@ -8,4 +8,4 @@ The purpose of this challenge is to help a junior data analyst to gather data ab
 * We will use Flask to create a web application using Python and customize it with HTML and CSS; in addition,
 * We will use Bootstrap to poslish the web application and make it mobile responsive.
 
-![WebApp.png](http://localhost:8888/view/Desktop/Mission-to-Mars/WebApp.png)
+![WebApp.png](https://github.com/LucyPill/Mission-to-Mars/blob/main/MarsWebApp.png)
