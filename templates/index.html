@@ -6,52 +6,81 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Mission to Mars</title>
     <link
-      rel="stylesheet body {
-        margin: 5px;
-        padding-bottom: 70px;
-        background-color: darkgray !important;
-        }"
+      rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     />
   </head>
-  <body>
-    <div class="container">
+  <body style="background-image:linear-gradient(black, rgba(202, 229, 230, 0.904), black)">
+    <div class="container" >
       <!-- Add Jumbotron to Header -->
-      <div class="jumbotron text-center">
-        <h1>Mission to Mars</h1>
+      <div class="jumbotron text-center" style="background-image: url('https://clickhole.com/wp-content/uploads/2021/06/iStock-1167009385-scaled-e1623681136885-1024x537.jpg')" opacity= 0.5>
+        <h1  >Mission to Mars</h1>
         <!-- Add a button to activate scraping script -->
-        <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+        <p><a class="btn btn-outline-dark btn-lg" href="/scrape" role="button" style="color:black">Scrape New Data</a></p>
       </div>
-      <!-- Mars News -->
-      <div class="row" id="mars-news">
-        <div class="col-md-12">
-          <div class="media">
-            <div class="media-body">
-              <h2>Latest Mars News</h2>
-              <h4 class="media-heading">{{ mars.news_title }}</h4>
-              <p>{{ mars.news_paragraph }}</p>
+
+      <div class="row" id="info">
+        <div class="page-header">
+          <h2  style=" color:black" class="text-center">Current News and Facts</h2>
+        </div>
+      </div>
+
+      <!-- Section for News, Featured Image and Facts table -->
+      <div class = "container2">
+        <div class="col-md-2">
+          <!-- News-->            
+          <div class="row" id="mars-news">
+            <div class="media">
+              <div class="media-body">
+                <h3 style="color:black" >News</h3>
+                <h4 style="color:black" class="media-heading">{{ mars.news_title }}</h4>
+                <p style="color:black">{{ mars.news_paragraph }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>  
+        
+        
+        <div class="col-md-6">
+          <!-- featured image-->
+          <div class="row" id="mars-featured-image">          
+            <h3 style="color:black">Featured Image</h3>
+
+            <!-- if images is False/None/non-existent, then default to error message -->
+            <img
+              src="{{mars.featured_image | default('static/images/error.png', true) }}"
+              class="img-responsive"
+              alt="Responsive image"
+            />
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <!-- Mars Facts -->
+          <div class="row; table" id="mars-facts"  style="color:black">
+            <h3 style="color:black">Mars Facts</h3>
+            <div style = "background-color: rgba(243, 240, 240, 0.836)" !important>
+              {{ mars.facts | safe }}  
+            </div>   
+          </div>
+        </div>
+      
+
+      <!-- Section for Mars Hemispheres -->
+      <div class="row" id="mars-hemispheres">
+        <div class="page-header">
+          <h2  style=" color:black" class="text-center">Mars Hemispheres</h2>
+        </div>
+
+        {% for hemisphere in mars.hemispheres %}
+        <div class="col-md-3">
+          <div class="thumbnail">
+            <img src="{{hemisphere.img_url | default('static/images/error.png', true)}}" alt="..." class="img-thumbnail">
+            <div class="caption">
+              <h3 style="color:black">{{hemisphere.title}}</h3>
             </div>
           </div>
         </div>
+        {% endfor %}
       </div>
-      <!-- Featured Image and Facts table -->
-      <div class="row" id="mars-featured-image">
-        <div class="col-md-8">
-          <h2>Featured Mars Image</h2>
-          <img
-            src="{{mars.featured_image }}"
-            class="img-responsive"
-            alt="Responsive image"
-          />
-        </div>
-        <div class="col-md-4">
-          <!-- Mars Facts -->
-          <div class="row" id="mars-facts">
-            <h4>Mars Facts</h4>
-            {{ mars.facts | safe }}
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
-</html>
